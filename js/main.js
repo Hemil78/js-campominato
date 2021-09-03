@@ -50,34 +50,65 @@ while( numCPU.length < 16 ) {
 console.log(numCPU);
 
 // In seguito il giocatore clicca sulle celle numerate (non può cliccare più volte sulla stessa cella)
+// La partita termina quando il giocatore clicca su un numero “vietato” o clicca su tutte le celle che non sono delle bombe.
+// Al termine della partita il software deve comunicare il punteggio.
+
+var punteggio = [];
+var tentativi = number - numCPU;
 
 document.getElementById( "campo" ).addEventListener("click",
     function(evento) {
-        evento.target.classList.toggle("cliccato");
-        var clickNum = evento.target.innerHTML;
+        var clickNum = parseInt(evento.target.innerHTML);
         // se clickNum è nell'array numPcu hai perso
         if( inArray( numCPU, clickNum ) == true ){
-            alert("Hai perso!");
-        } else{
+            alert("Hai perso! Il tuo punteggio è: " + punteggio.length);
+            evento.target.classList.toggle("cliccato");
+            location.reload();
+            // se clicco piu di una volta lo stesso bottone
+        } else if(inArray( punteggio, clickNum ) == true ){
+            alert("Hai già cliccato su questo numero!");
+            // salvo all'interno di punteggio i click validi 
+        } else {
+            punteggio.push(clickNum);
             evento.target.classList.toggle("blue");
+            // se si cliccano tutte le possibilita
+            if (punteggio.length == tentativi) {
+                console.log(tentativi);
+                alert("Molto bene! Hai completato il gioco");
+                location.reload();
+            }
         }
+        
     }
 );
+        
 
-// La partita termina quando il giocatore clicca su un numero “vietato” o clicca su tutte le celle che non sono delle bombe.
-
-
-
-
-
-
-// Al termine della partita il software deve comunicare il punteggio.
 
 /* BONUS: (da fare solo se funziona tutto il resto)
 all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
 con difficoltà 0 => tra 1 e 100
 con difficoltà 1 => tra 1 e 80
 con difficoltà 2 => tra 1 e 50 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
