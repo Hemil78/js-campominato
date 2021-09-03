@@ -62,7 +62,7 @@ document.getElementById( "campo" ).addEventListener("click",
         // se clickNum è nell'array numPcu hai perso
         if( inArray( numCPU, clickNum ) == true ){
             alert("Hai perso! Il tuo punteggio è: " + punteggio.length);
-            evento.target.classList.toggle("cliccato");
+            evento.target.classList.add("cliccato");
             location.reload();
             // se clicco piu di una volta lo stesso bottone
         } else if(inArray( punteggio, clickNum ) == true ){
@@ -70,7 +70,7 @@ document.getElementById( "campo" ).addEventListener("click",
             // salvo all'interno di punteggio i click validi 
         } else {
             punteggio.push(clickNum);
-            evento.target.classList.toggle("blue");
+            evento.target.classList.add("blue");
             // se si cliccano tutte le possibilita
             if (punteggio.length == tentativi) {
                 console.log(tentativi);
