@@ -38,7 +38,7 @@ creaCampo(numeroCelle);
 var numCPU = [];
 
 while( numCPU.length < 16 ) {
-    var number = Math.floor(Math.random() * 100) + 1;
+    var number = Math.floor(Math.random() * numeroCelle) + 1;
     // controllo che i numeri non si ripetano
 
     if( inArray(numCPU, number) == false ) {
@@ -54,7 +54,7 @@ console.log(numCPU);
 // Al termine della partita il software deve comunicare il punteggio.
 
 var punteggio = [];
-var tentativi = number - numCPU;
+var tentativi = numeroCelle - numCPU.length;
 
 document.getElementById( "campo" ).addEventListener("click",
     function(evento) {
@@ -72,6 +72,8 @@ document.getElementById( "campo" ).addEventListener("click",
             punteggio.push(clickNum);
             evento.target.classList.add("blue");
             // se si cliccano tutte le possibilita
+
+            console.log(tentativi);
             if (punteggio.length == tentativi) {
                 console.log(tentativi);
                 alert("Molto bene! Hai completato il gioco");
@@ -89,6 +91,7 @@ all’inizio il software richiede anche una difficoltà all’utente che cambia 
 con difficoltà 0 => tra 1 e 100
 con difficoltà 1 => tra 1 e 80
 con difficoltà 2 => tra 1 e 50 */
+
 
 
 
